@@ -1,0 +1,40 @@
+# pyproject.toml
+# This file tells uv which Python libraries your thesis code needs.
+# To use it: put this file in your thesis folder, then run `uv sync` once.
+# That creates an isolated environment (a .venv folder) with everything below,
+# and a uv.lock file that pins exact versions so the setup is reproducible.
+#
+# Use Python 3.12 (run `uv python pin 3.12` once). The numba/llvmlite lines
+# below force modern versions that ship ready-made Windows wheels for 3.12;
+# without them uv picks an old numba that has no 3.12 wheel and fails to build.
+
+[project]
+name = "oasis-thesis"
+version = "0.1.0"
+description = "OASIS-2 dementia prediction thesis analysis"
+requires-python = ">=3.12,<3.13"
+
+dependencies = [
+    # Core data handling
+    "numpy",
+    "pandas",
+    "openpyxl",        # needed by pandas to read the OASIS .xlsx spreadsheet
+    "scipy",           # Mann-Whitney U, ndimage masks
+
+    # Plotting
+    "matplotlib",
+
+    # MRI / imaging
+    "nibabel",         # reads the .hdr/.img scan files
+    "scikit-image",    # GLCM texture features (imported as skimage)
+
+    # Modelling and interpretation
+    "scikit-learn",    # the four classifiers and cross-validation (imported as sklearn)
+    "shap",            # SHAP feature importance
+    "numba>=0.60",     # required by shap; modern version has 3.12 wheels
+    "llvmlite>=0.43",  # numba's backend; modern version has 3.12 wheels
+
+    # Running the notebook
+    "jupyterlab",
+    "ipykernel",
+]
