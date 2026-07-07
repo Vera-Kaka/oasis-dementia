@@ -34,17 +34,19 @@ Python · scikit-learn · nibabel · scikit-image · SHAP · pandas · NumPy · 
 
 ## Repository structure
 
-```
-thesis_clean.ipynb          # full pipeline: preprocessing, feature extraction, modelling, figures
-mri_features_extracted.csv  # derived MRI proxy features per session
-pyproject.toml / uv.lock    # reproducible environment
-figures/                    # results and methodology figures
+This repository contains code only. Data files and generated outputs (figures, extracted features) are not included; run the notebook against your own OASIS-2 download to reproduce them.
+​```
+thesis_clean.ipynb        # full pipeline: preprocessing, feature extraction, modelling, evaluation
+pyproject.toml / uv.lock  # reproducible environment
+.python-version           # pinned Python version
 README.md
-```
+​```
 
 ## Data
 
-This project uses **OASIS-2** (Marcus et al., 2010). The raw MRI archives and clinical spreadsheet are **not** redistributed here due to the OASIS data-use terms — they are available directly from [oasis-brains.org](https://www.oasis-brains.org/) on request. The included `mri_features_extracted.csv` contains only the derived summary features computed in this work.
+This project uses **OASIS-2** (Marcus et al., 2010). No OASIS data are redistributed in this repository, in line with the OASIS Data Use Agreement. The raw MRI archives and clinical spreadsheet are available directly from [oasis-brains.org](https://www.oasis-brains.org/) on request. The notebook documents exactly how the MRI proxy features are computed, so the full feature set can be reproduced by anyone with OASIS access.
+
+Data were provided by OASIS-2 (Marcus et al., 2010; PIs D. Marcus, R. Buckner, J. Csernansky, J. Morris), accessed via oasis-brains.org under the OASIS Data Use Agreement.
 
 ## Author
 
